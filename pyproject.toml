@@ -1,0 +1,17 @@
+[tool.pdm]
+[tool.pdm.scripts]
+start = "uvicorn main:app --reload"
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Yifan Wu", email = "tyivanwu@gmail.com"},
+]
+dependencies = [
+    "fastapi>=0.92.0",
+    "uvicorn>=0.20.0",
+]
+requires-python = ">=3.9"
+license = {text = "MIT"}
