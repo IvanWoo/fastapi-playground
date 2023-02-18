@@ -2,7 +2,7 @@
 
 specs
 
-- [PEP 333](https://peps.python.org/pep-0333/#environ-variables)
+- [PEP 333](https://peps.python.org/pep-0333)
 
 parameters
 
@@ -15,6 +15,12 @@ example
 def app(environ, start_response):
     start_response('200 OK', [('Content-Type', 'text/plain')])
     return [b'Greetings universe']
+```
+
+[wsgi_app.py](./examples/wsgi_app.py)
+
+```sh
+pdm run gunicorn docs.examples.wsgi_app:app --reload
 ```
 
 ### libraries
@@ -52,7 +58,7 @@ parameters
 example
 
 ```py
-async def application(scope, receive, send):
+async def app(scope, receive, send):
     await send({
         'type': 'http.response.start',
         'status': 200,
@@ -65,6 +71,12 @@ async def application(scope, receive, send):
         'type': 'http.response.body',
         'body': b'Hello, world!',
     })
+```
+
+[asgi_app.py](./examples/asgi_app.py)
+
+```sh
+pdm run uvicorn docs.examples.asgi_app:app --reload
 ```
 
 ### libraries
@@ -133,3 +145,8 @@ ASGIFramework = Callable[
             scope["root_path"] = self.root_path
         await super().__call__(scope, receive, send)
 ```
+
+## references
+
+- [ASGI explained: The future of Python web development](https://www.infoworld.com/article/3658336/asgi-explained-the-future-of-python-web-development.html)
+- [Getting Started with Rack](https://gist.github.com/markbates/4240848)
