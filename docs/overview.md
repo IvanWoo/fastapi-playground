@@ -22,7 +22,7 @@ def app(environ, start_response):
 [wsgi_app.py](./examples/wsgi_app.py)
 
 ```sh
-pdm run gunicorn docs.examples.wsgi_app:app --reload
+pdm run gunicorn docs.examples.python.wsgi_app:app --reload
 ```
 
 ### libraries
@@ -78,7 +78,7 @@ async def app(scope, receive, send):
 [asgi_app.py](./examples/asgi_app.py)
 
 ```sh
-pdm run uvicorn docs.examples.asgi_app:app --reload
+pdm run uvicorn docs.examples.python.asgi_app:app --reload
 ```
 
 ### libraries
