@@ -1,6 +1,6 @@
 [tool.pdm]
 [tool.pdm.scripts]
-start = "uvicorn main:app --reload"
+start = "uvicorn app.main:app --reload"
 
 [tool.pdm.dev-dependencies]
 dev = [
