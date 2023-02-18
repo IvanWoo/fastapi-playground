@@ -1,3 +1,5 @@
+# Python
+
 ## WSGI(Web Server Gateway Interface)
 
 specs
@@ -146,7 +148,36 @@ ASGIFramework = Callable[
         await super().__call__(scope, receive, send)
 ```
 
-## references
+# Ruby
+
+## [Rack](https://github.com/rack/rack)
+
+> A modular Ruby web server interface
+
+specs
+
+- [rack/SPEC.rdoc](https://github.com/rack/rack/blob/main/SPEC.rdoc)
+
+parameters
+
+- environment: adopted from [PEP 333](https://peps.python.org/pep-0333)
+
+return
+
+- [status, headers, body]
+
+examples
+
+[app.rb](./examples/ruby/app.rb)
+
+```sh
+rbenv install
+bundle install
+RACK_ENV=develoyment bundle exec rackup docs/examples/ruby/config.ru
+```
+
+# references
 
 - [ASGI explained: The future of Python web development](https://www.infoworld.com/article/3658336/asgi-explained-the-future-of-python-web-development.html)
 - [Getting Started with Rack](https://gist.github.com/markbates/4240848)
+- [Writing a small web service with Ruby, Rack, and functional programming](https://levelup.gitconnected.com/writing-a-small-web-service-with-ruby-rack-and-functional-programming-a16f802a19c0)
