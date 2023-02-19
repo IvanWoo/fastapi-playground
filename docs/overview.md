@@ -19,7 +19,7 @@ def app(environ, start_response):
     return [b'Greetings universe']
 ```
 
-[wsgi_app.py](./examples/wsgi_app.py)
+[wsgi_app.py](./examples/python/wsgi_app.py)
 
 ```sh
 pdm run gunicorn docs.examples.python.wsgi_app:app --reload
@@ -75,7 +75,7 @@ async def app(scope, receive, send):
     })
 ```
 
-[asgi_app.py](./examples/asgi_app.py)
+[asgi_app.py](./examples/python/asgi_app.py)
 
 ```sh
 pdm run uvicorn docs.examples.python.asgi_app:app --reload
