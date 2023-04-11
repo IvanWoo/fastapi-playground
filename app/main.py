@@ -2,7 +2,7 @@ from fastapi import Depends, FastAPI
 
 from app.dependencies import get_query_token, get_token_header
 from app.internal import admin
-from app.routers import items, users, notifications, exceptions
+from app.routers import items, users, notifications, exceptions, queues
 from app.exception_handlers import register_exception_handlers
 
 app = FastAPI(dependencies=[Depends(get_query_token)])
@@ -10,6 +10,7 @@ app = FastAPI(dependencies=[Depends(get_query_token)])
 app.include_router(users.router)
 app.include_router(items.router)
 app.include_router(notifications.router)
+app.include_router(queues.router)
 app.include_router(exceptions.router)
 app.include_router(
     admin.router,
