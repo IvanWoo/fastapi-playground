@@ -3,6 +3,8 @@ import time
 import concurrent
 
 from fastapi import APIRouter
+from fastapi import status
+from fastapi.responses import JSONResponse
 
 router = APIRouter()
 
@@ -27,6 +29,10 @@ def run_background_task():
 @router.post("/queue")
 async def add_item(item: str):
     q.put(item)
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"message": f"accepted adding item: {item}"},
+    )
 
 
 @router.on_event("startup")
