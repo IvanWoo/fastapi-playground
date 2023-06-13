@@ -1,10 +1,13 @@
 [tool.pdm]
 [tool.pdm.scripts]
 start = "uvicorn app.main:app --reload"
+test = "pytest -vv"
 
 [tool.pdm.dev-dependencies]
 dev = [
     "black>=23.1.0",
+    "pytest>=7.3.2",
+    "httpx>=0.24.1",
 ]
 [project]
 name = ""
