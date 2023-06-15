@@ -30,5 +30,14 @@ async def root():
 # https://stackoverflow.com/questions/63206332/how-can-i-list-all-defined-url-paths-in-fastapi
 @app.get("/url-list")
 def get_all_urls():
-    url_list = [{"path": route.path, "name": route.name} for route in app.routes]
+    # import inspect
+
+    # for route in app.routes:
+    #     print("-" * 20)
+    #     for i in inspect.getmembers(route):
+    #         print(i)
+    url_list = [
+        {"path": route.path, "name": route.name, "methods": route.methods}
+        for route in app.routes
+    ]
     return url_list

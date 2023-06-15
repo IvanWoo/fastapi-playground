@@ -40,71 +40,126 @@ pdm run test
 [
   {
     "path": "/openapi.json",
-    "name": "openapi"
+    "name": "openapi",
+    "methods": [
+      "GET",
+      "HEAD"
+    ]
   },
   {
     "path": "/docs",
-    "name": "swagger_ui_html"
+    "name": "swagger_ui_html",
+    "methods": [
+      "GET",
+      "HEAD"
+    ]
   },
   {
     "path": "/docs/oauth2-redirect",
-    "name": "swagger_ui_redirect"
+    "name": "swagger_ui_redirect",
+    "methods": [
+      "GET",
+      "HEAD"
+    ]
   },
   {
     "path": "/redoc",
-    "name": "redoc_html"
+    "name": "redoc_html",
+    "methods": [
+      "GET",
+      "HEAD"
+    ]
   },
   {
     "path": "/users/",
-    "name": "read_users"
+    "name": "read_users",
+    "methods": [
+      "GET"
+    ]
   },
   {
     "path": "/users/me",
-    "name": "read_user_me"
+    "name": "read_user_me",
+    "methods": [
+      "GET"
+    ]
   },
   {
     "path": "/users/{username}",
-    "name": "read_user"
+    "name": "read_user",
+    "methods": [
+      "GET"
+    ]
   },
   {
     "path": "/items/",
-    "name": "read_items"
+    "name": "read_items",
+    "methods": [
+      "GET"
+    ]
   },
   {
     "path": "/items/{item_id}",
-    "name": "read_item"
+    "name": "read_item",
+    "methods": [
+      "GET"
+    ]
   },
   {
     "path": "/items/{item_id}",
-    "name": "update_item"
+    "name": "update_item",
+    "methods": [
+      "PUT"
+    ]
   },
   {
     "path": "/send-notification/{email}",
-    "name": "send_notification"
+    "name": "send_notification",
+    "methods": [
+      "POST"
+    ]
   },
   {
     "path": "/queue",
-    "name": "add_item"
+    "name": "add_item",
+    "methods": [
+      "POST"
+    ]
   },
   {
     "path": "/exceptions/duplicate_name",
-    "name": "raise_duplicate_name_error"
+    "name": "raise_duplicate_name_error",
+    "methods": [
+      "GET"
+    ]
   },
   {
     "path": "/exceptions/invalid_name",
-    "name": "raise_invalid_name_error"
+    "name": "raise_invalid_name_error",
+    "methods": [
+      "GET"
+    ]
   },
   {
     "path": "/admin/",
-    "name": "update_admin"
+    "name": "update_admin",
+    "methods": [
+      "POST"
+    ]
   },
   {
     "path": "/",
-    "name": "root"
+    "name": "root",
+    "methods": [
+      "GET"
+    ]
   },
   {
     "path": "/url-list",
-    "name": "get_all_urls"
+    "name": "get_all_urls",
+    "methods": [
+      "GET"
+    ]
   }
 ]
 ```
