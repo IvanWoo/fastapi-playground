@@ -4,8 +4,9 @@ from app.dependencies import get_query_token, get_token_header
 from app.internal import admin
 from app.routers import items, users, notifications, exceptions, queues
 from app.exception_handlers import register_exception_handlers
+from app.config.lifespan import lifespan
 
-app = FastAPI(dependencies=[Depends(get_query_token)])
+app = FastAPI(dependencies=[Depends(get_query_token)], lifespan=lifespan)
 
 app.include_router(users.router)
 app.include_router(items.router)

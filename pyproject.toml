@@ -17,7 +17,7 @@ authors = [
     {name = "Yifan Wu", email = "tyivanwu@gmail.com"},
 ]
 dependencies = [
-    "fastapi>=0.92.0",
+    "fastapi>=0.97.0",
     "uvicorn>=0.20.0",
     "gunicorn>=20.1.0",
 ]
