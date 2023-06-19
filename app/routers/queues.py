@@ -7,7 +7,7 @@ router = APIRouter()
 
 
 @router.post("/queue")
-async def add_item(item: str):
+async def add_item(item: int):
     q.put(item)
     return JSONResponse(
         status_code=status.HTTP_200_OK,
