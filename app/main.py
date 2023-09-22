@@ -2,7 +2,7 @@ from fastapi import Depends, FastAPI
 
 from app.dependencies import get_query_token, get_token_header
 from app.internal import admin
-from app.routers import items, users, notifications, exceptions, queues
+from app.routers import items, users, notifications, exceptions, queues, upload
 from app.exception_handlers import register_exception_handlers
 from app.config.lifespan import lifespan
 
@@ -13,6 +13,7 @@ app.include_router(items.router)
 app.include_router(notifications.router)
 app.include_router(queues.router)
 app.include_router(exceptions.router)
+app.include_router(upload.router)
 app.include_router(
     admin.router,
     prefix="/admin",
