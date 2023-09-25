@@ -22,23 +22,34 @@ s3_client = boto3.client(
 )
 
 
+def _upload_file_one(file: File) -> str:
+    _, extension = os.path.splitext(file.filename)
+    s3_file_name = f"{uuid4()}{extension}"
+
+    # Upload file to Minio
+    s3_client.upload_fileobj(file.file, BUCKET_NAME, s3_file_name)
+
+    # Generate the signed URL
+    url = s3_client.generate_presigned_url(
+        "get_object",
+        Params={"Bucket": BUCKET_NAME, "Key": s3_file_name},
+        ExpiresIn=600,
+    )
+    return {"filename": file.filename, "url": url}
+
+
 @router.post("/upload/", tags=["upload"])
 async def upload_file(file: UploadFile = File(...)):
     try:
-        _, extension = os.path.splitext(file.filename)
-        s3_file_name = f"{uuid4()}{extension}"
-
-        # Upload file to Minio
-        s3_client.upload_fileobj(file.file, BUCKET_NAME, s3_file_name)
-
-        # Generate the signed URL
-        url = s3_client.generate_presigned_url(
-            "get_object",
-            Params={"Bucket": BUCKET_NAME, "Key": s3_file_name},
-            ExpiresIn=600,
-        )
-
-        return {"filename": file.filename, "url": url}
+        return _upload_file_one(file)
 
     except NoCredentialsError:
         return {"error": "Missing credentials"}
+
+
+@router.post("/upload-many/", tags=["upload"])
+async def upload_files(files: list[UploadFile]):
+    ret = []
+    for file in files:
+        ret.append(_upload_file_one(file))
+    return ret
