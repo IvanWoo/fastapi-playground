@@ -13,6 +13,6 @@ async def authorized(api_token: str = Depends(api_key_header)) -> None:
         raise HTTPException(status_code=401, detail="Invalid API Key")
 
 
-async def get_query_token(token: str):
+async def verify_query_token(token: str):
     if token != "jessica":
         raise HTTPException(status_code=400, detail="No jessica token provided")

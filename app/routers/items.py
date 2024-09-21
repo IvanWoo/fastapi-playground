@@ -1,11 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException
 
-from app.dependencies import authorized
 
 router = APIRouter(
     prefix="/items",
     tags=["items"],
-    dependencies=[Depends(authorized)],
     responses={404: {"description": "Not found"}},
 )
 

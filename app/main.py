@@ -1,15 +1,15 @@
 from fastapi import Depends, FastAPI
 
-from app.dependencies import get_query_token, authorized
+from app.dependencies import verify_query_token, authorized
 from app.internal import admin
 from app.routers import items, users, notifications, exceptions, queues, upload
 from app.exception_handlers import register_exception_handlers
 from app.config.lifespan import lifespan
 
-app = FastAPI(dependencies=[Depends(get_query_token)], lifespan=lifespan)
+app = FastAPI(lifespan=lifespan)
 
 app.include_router(users.router)
-app.include_router(items.router)
+app.include_router(items.router, dependencies=[Depends(authorized)])
 app.include_router(notifications.router)
 app.include_router(queues.router)
 app.include_router(exceptions.router)
@@ -18,7 +18,7 @@ app.include_router(
     admin.router,
     prefix="/admin",
     tags=["admin"],
-    dependencies=[Depends(authorized)],
+    dependencies=[Depends(verify_query_token)],
     responses={418: {"description": "I'm a teapot"}},
 )
 register_exception_handlers(app)
