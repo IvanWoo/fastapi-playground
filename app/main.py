@@ -1,6 +1,6 @@
 from fastapi import Depends, FastAPI
 
-from app.dependencies import get_query_token, get_token_header
+from app.dependencies import get_query_token, authorized
 from app.internal import admin
 from app.routers import items, users, notifications, exceptions, queues, upload
 from app.exception_handlers import register_exception_handlers
@@ -18,7 +18,7 @@ app.include_router(
     admin.router,
     prefix="/admin",
     tags=["admin"],
-    dependencies=[Depends(get_token_header)],
+    dependencies=[Depends(authorized)],
     responses={418: {"description": "I'm a teapot"}},
 )
 register_exception_handlers(app)

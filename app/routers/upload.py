@@ -1,7 +1,7 @@
 import os
 from uuid import uuid4
 
-from fastapi import APIRouter, UploadFile, File
+from fastapi import APIRouter, UploadFile, File, Form
 from botocore.exceptions import NoCredentialsError
 import boto3
 
@@ -48,8 +48,8 @@ async def upload_file(file: UploadFile = File(...)):
 
 
 @router.post("/upload-many/", tags=["upload"])
-async def upload_files(files: list[UploadFile]):
+async def upload_files(files: list[UploadFile], entity: str = Form(...)):
     ret = []
     for file in files:
-        ret.append(_upload_file_one(file))
+        ret.append({**_upload_file_one(file), "entity": entity})
     return ret
