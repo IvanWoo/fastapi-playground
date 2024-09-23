@@ -3,10 +3,12 @@ client/__init__.py
 client/_generated/__init__.py
 client/_generated/openapi_client/__init__.py
 client/_generated/openapi_client/api/__init__.py
+client/_generated/openapi_client/api/default_api.py
 client/_generated/openapi_client/api/upload_api.py
 client/_generated/openapi_client/api_client.py
 client/_generated/openapi_client/api_response.py
 client/_generated/openapi_client/configuration.py
+client/_generated/openapi_client/docs/DefaultApi.md
 client/_generated/openapi_client/docs/HTTPValidationError.md
 client/_generated/openapi_client/docs/UploadApi.md
 client/_generated/openapi_client/docs/ValidationError.md
@@ -18,6 +20,7 @@ client/_generated/openapi_client/models/validation_error.py
 client/_generated/openapi_client/models/validation_error_loc_inner.py
 client/_generated/openapi_client/rest.py
 client/_generated/openapi_client/test/__init__.py
+client/_generated/openapi_client/test/test_default_api.py
 client/_generated/openapi_client/test/test_http_validation_error.py
 client/_generated/openapi_client/test/test_upload_api.py
 client/_generated/openapi_client/test/test_validation_error.py

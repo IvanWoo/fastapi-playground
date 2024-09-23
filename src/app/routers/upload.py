@@ -48,7 +48,7 @@ async def upload_file(file: UploadFile = File(...)):
 
 
 @router.post("/upload-many/", tags=["upload"])
-async def upload_files(files: list[UploadFile], entity: str = Form(...)):
+async def upload_files(files: list[UploadFile] = File(...), entity: str = Form(...)):
     ret = []
     for file in files:
         ret.append({**_upload_file_one(file), "entity": entity})

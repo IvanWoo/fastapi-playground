@@ -44,16 +44,15 @@ configuration = client._generated.openapi_client.Configuration(
 # Enter a context with an instance of the API client
 with client._generated.openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = client._generated.openapi_client.UploadApi(api_client)
-    file = None # bytearray | 
+    api_instance = client._generated.openapi_client.DefaultApi(api_client)
 
     try:
-        # Upload File
-        api_response = api_instance.upload_file_upload_post(file)
-        print("The response of UploadApi->upload_file_upload_post:\n")
+        # Get All Urls
+        api_response = api_instance.get_all_urls_url_list_get()
+        print("The response of DefaultApi->get_all_urls_url_list_get:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling UploadApi->upload_file_upload_post: %s\n" % e)
+        print("Exception when calling DefaultApi->get_all_urls_url_list_get: %s\n" % e)
 
 ```
 
@@ -63,6 +62,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**get_all_urls_url_list_get**](client/_generated/openapi_client/docs/DefaultApi.md#get_all_urls_url_list_get) | **GET** /url-list | Get All Urls
 *UploadApi* | [**upload_file_upload_post**](client/_generated/openapi_client/docs/UploadApi.md#upload_file_upload_post) | **POST** /upload/ | Upload File
 *UploadApi* | [**upload_files_upload_many_post**](client/_generated/openapi_client/docs/UploadApi.md#upload_files_upload_many_post) | **POST** /upload-many/ | Upload Files
 

@@ -82,6 +82,22 @@
           }
         }
       }
+    },
+    "/url-list": {
+      "get": {
+        "summary": "Get All Urls",
+        "operationId": "get_all_urls_url_list_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
