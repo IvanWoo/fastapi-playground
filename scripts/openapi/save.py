@@ -24,7 +24,7 @@ def save_openapi_json():
         if path in ALLOW_PATHS
     }
 
-    output_path = Path(__file__).parent.parent / "docs" / "openapi.json"
+    output_path = Path(__file__).parent.parent.parent / "docs" / "openapi.json"
 
     with open(output_path, "w") as f:
         json.dump(openapi_schema, f, indent=2)
