@@ -6,7 +6,7 @@ from app.routers import items, users, notifications, exceptions, queues, upload
 from app.exception_handlers import register_exception_handlers
 from app.config.lifespan import lifespan
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(title="fastapi-playground", lifespan=lifespan)
 
 app.include_router(users.router)
 app.include_router(items.router, dependencies=[Depends(authorized)])
