@@ -19,7 +19,7 @@ license = {text = "MIT"}
 [tool.pdm.scripts]
 start = "uvicorn app.main:app --reload"
 test = "pytest -vv"
-save-openapi = "save_openapi.py"
+save-openapi = "scripts/save_openapi.py"
 
 [tool.pdm.dev-dependencies]
 dev = [
