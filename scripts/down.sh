@@ -8,5 +8,6 @@ REPO_DIR="${BASE_DIR}/.."
 (
 cd ${REPO_DIR}
 helm uninstall my-minio -n fastapi-playground
+helm uninstall my-redis -n fastapi-playground
 kubectl delete namespace fastapi-playground
 )

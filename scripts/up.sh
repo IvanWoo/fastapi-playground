@@ -8,5 +8,7 @@ REPO_DIR="${BASE_DIR}/.."
 (
 cd ${REPO_DIR}
 kubectl create namespace fastapi-playground --dry-run=client -o yaml | kubectl apply -f -
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm upgrade --install my-minio oci://registry-1.docker.io/bitnamicharts/minio -n fastapi-playground -f minio/values.yaml
+helm upgrade --install my-redis bitnami/redis -n fastapi-playground -f redis/values.yaml
 )

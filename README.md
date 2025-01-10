@@ -1,5 +1,23 @@
 # fastapi-playground
 
+- [fastapi-playground](#fastapi-playground)
+  - [setup](#setup)
+  - [dev](#dev)
+    - [start the app](#start-the-app)
+    - [start the worker](#start-the-worker)
+    - [start the flower](#start-the-flower)
+  - [debug](#debug)
+  - [docs](#docs)
+  - [test](#test)
+    - [unit tests](#unit-tests)
+    - [list all url](#list-all-url)
+- [external systems](#external-systems)
+  - [setup](#setup-1)
+    - [namespace](#namespace)
+    - [minio](#minio)
+    - [redis](#redis)
+  - [cleanup](#cleanup)
+
 ## setup
 
 ```sh
@@ -8,8 +26,22 @@ pdm install
 
 ## dev
 
+### start the app
+
 ```sh
 pdm run start
+```
+
+### start the worker
+
+```sh
+pdm run worker
+```
+
+### start the flower
+
+```sh
+pdm run flower
 ```
 
 ## debug
@@ -196,11 +228,42 @@ expose to localhost
 kubectl port-forward --namespace fastapi-playground svc/my-minio 9000
 ```
 
+### redis
+
+follow the [bitnami redis chart](https://github.com/bitnami/charts/tree/master/bitnami/redis) to install redis
+
+```sh
+helm repo add bitnami https://charts.bitnami.com/bitnami
+```
+
+```sh
+helm upgrade --install my-redis bitnami/redis -n fastapi-playground -f redis/values.yaml
+```
+
+verify the installation
+
+```sh
+kubectl exec -it svc/my-redis-master -n fastapi-playground -- redis-cli -h my-redis-master -a password scan 0
+```
+
+```sh
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+1) "0"
+2) (empty array)
+```
+
+expose to localhost
+
+```sh
+kubectl port-forward --namespace fastapi-playground svc/my-redis-master 6379
+```
+
 ## cleanup
 
 tl;dr: `./scripts/down.sh`
 
 ```sh
 helm uninstall my-minio -n fastapi-playground
+helm uninstall my-redis -n fastapi-playground
 kubectl delete namespace fastapi-playground
 ```

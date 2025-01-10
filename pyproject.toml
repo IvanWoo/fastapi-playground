@@ -2,9 +2,7 @@
 name = "fastapi-playground"
 version = "0.0.1"
 description = ""
-authors = [
-    {name = "Yifan Wu", email = "tyivanwu@gmail.com"},
-]
+authors = [{ name = "Yifan Wu", email = "tyivanwu@gmail.com" }]
 dependencies = [
     "fastapi>=0.97.0",
     "uvicorn>=0.20.0",
@@ -12,20 +10,20 @@ dependencies = [
     "python-multipart>=0.0.6",
     "boto3>=1.28.53",
     "pydantic>=2.9.2",
+    "flower>=2.0.1",
+    "celery[redis]>=5.4.0",
 ]
 requires-python = ">=3.10"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
 [tool.pdm]
 [tool.pdm.scripts]
 start = "uvicorn app.main:app --reload"
+worker = "celery -A app.workers.celery worker -Q default"
+flower = "celery -A app.workers.celery flower"
 test = "pytest -vv"
 openapi-save = "scripts/openapi/save.py"
 openapi-generate = "scripts/openapi/generate.sh"
 
 [tool.pdm.dev-dependencies]
-dev = [
-    "black>=23.1.0",
-    "pytest>=7.3.2",
-    "httpx>=0.24.1",
-]
+dev = ["black>=23.1.0", "pytest>=7.3.2", "httpx>=0.24.1"]
