@@ -10,6 +10,13 @@
             "request": "launch",
             "module": "app",
             "justMyCode": true
+        },
+        {
+            "name": "Python: Attach",
+            "type": "python",
+            "request": "attach",
+            "host": "localhost",
+            "port": 5678,
         }
     ]
 }

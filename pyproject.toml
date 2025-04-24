@@ -19,11 +19,13 @@ license = { text = "MIT" }
 [tool.pdm]
 [tool.pdm.scripts]
 start = "uvicorn app.main:app --reload"
+debug = "python -m debugpy --listen localhost:5678 -m app"
 worker = "celery -A app.workers.celery worker -Q default"
 flower = "celery -A app.workers.celery flower"
 test = "pytest -vv"
 openapi-save = "scripts/openapi/save.py"
 openapi-generate = "scripts/openapi/generate.sh"
 
-[tool.pdm.dev-dependencies]
-dev = ["black>=23.1.0", "pytest>=7.3.2", "httpx>=0.24.1"]
+
+[dependency-groups]
+dev = ["black>=23.1.0", "pytest>=7.3.2", "httpx>=0.24.1", "debugpy>=1.8.14"]

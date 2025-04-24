@@ -46,9 +46,11 @@ pdm run flower
 
 ## debug
 
-start and debug from `app/__main__.py`
+```sh
+pdm run debug
+```
 
-![start and debug from `app/__main__.py`](./assets/debug_entry.png)
+use the `Python: Attach` configuration from `.vscode/launch.json` to connect to `localhost:5678`.
 
 ## docs
 
