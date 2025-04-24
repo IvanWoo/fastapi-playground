@@ -19,7 +19,7 @@ license = { text = "MIT" }
 [tool.pdm]
 [tool.pdm.scripts]
 start = "uvicorn app.main:app --reload"
-debug = "python -m debugpy --listen localhost:5678 -m app"
+debug = "python -Xfrozen_modules=off -m debugpy --listen localhost:5678 -m app"
 worker = "celery -A app.workers.celery worker -Q default"
 flower = "celery -A app.workers.celery flower"
 test = "pytest -vv"
