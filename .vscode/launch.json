@@ -17,6 +17,7 @@
             "request": "attach",
             "host": "localhost",
             "port": 5678,
+            "justMyCode": false,
         }
     ]
 }

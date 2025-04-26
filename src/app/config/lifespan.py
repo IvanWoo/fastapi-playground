@@ -47,3 +47,4 @@ async def lifespan(app: FastAPI):
 
     print("shutdown")
     q.put(None)
+    executor.shutdown()

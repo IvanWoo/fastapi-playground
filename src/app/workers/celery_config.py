@@ -15,7 +15,9 @@ timezone = "UTC"
 enable_utc = True
 
 broker_connection_retry_on_startup = True
-
+worker_send_task_events = True
+task_ignore_result = True
+task_reject_on_worker_lost = True
 task_routes = {
     "*": {"queue": "default"},
 }
